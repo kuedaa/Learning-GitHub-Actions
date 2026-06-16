@@ -10,4 +10,4 @@ jobs:
          - name: Running Single Command in Job1
            run: echo "Hi, this is my first GitHub workflow"        
          - name: Checking OS release for GitHub Workflow
-           run: [ -f /etc/os-release ] && cat /etc/os-release
+           run: cat /etc/os-release
