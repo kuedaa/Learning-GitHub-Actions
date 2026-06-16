@@ -13,7 +13,7 @@ jobs:
            run: cat /etc/os-release
          - name: Calling Sleep
            run: sleep 25
-   job1:
+   job2:
       name: JOB2
       runs-on: ubuntu-latest
       steps:
