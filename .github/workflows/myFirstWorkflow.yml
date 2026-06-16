@@ -1,50 +1,47 @@
 name: my-first-workflow
-#To get trigger on every push in this repo in any branch
-on: 
-   # push:
-   schedule:
-      - cron: "5 * * * *"
-   workflow_dispatch: 
-   push: 
-
+on:
+  push: null
 jobs:
-   job1:
-      name: JOB1
-      runs-on: ubuntu-latest
-      steps:
-         - name: Running Single Command in Job1
-           run: echo "Hi, this is my first GitHub workflow"        
-         - name: Checking OS release for GitHub Workflow
-           run: cat /etc/os-release
-         - name: Calling Sleep
-           run: sleep 25
-   job2:
-      name: JOB2
-      runs-on: ubuntu-latest
-      steps:
-         - name: Checking the Hostname for Runner
-           run: hostname     
-         - name: Running Multiple Commands
-           run: |
-              echo "hi from Andre Kueda"
-              echo "current time is 'date'"
-              sleep 20
-   job3:
-      name: JOB3
-      needs: job1
-      runs-on: windows-latest
-      steps:
-         - name: Job with Single Dependency
-           run: sleep 10
-         - name: Checking Runner Info
-           shell: pwsh
-           run: get-computerinfo
-   job4:
-      name: JOB4
-      needs: [job1, job2, job3]
-      runs-on: macos-latest
-      steps:
-         - name: Job With Multiple dependecies
-           run: sleep 15
-         - name: Checking Runner Info
-           run: sw_vers
+  job1:
+    name: JOB1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Single Command in Job1
+        run: 'echo "Hi, this is my first GitHub workflow"'
+      - name: Checking OS release for GitHub Workflow
+        run: cat /etc/os-release
+      - name: Calling Sleep
+        run: sleep 25
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking the Hostname for Runner
+        run: hostname
+      - name: Running Multiple Commands
+        run: |
+          echo "hi from Andre Kueda"
+          echo "current time is 'date'"
+          sleep 20
+  job3:
+    name: JOB3
+    needs: job1
+    runs-on: windows-latest
+    steps:
+      - name: Job with Single Dependency
+        run: sleep 10
+      - name: Checking Runner Info
+        shell: pwsh
+        run: get-computerinfo
+  job4:
+    name: JOB4
+    needs:
+      - job1
+      - job2
+      - job3
+    runs-on: macos-latest
+    steps:
+      - name: Job With Multiple dependecies
+        run: sleep 15
+      - name: Checking Runner Info
+        run: sw_vers
