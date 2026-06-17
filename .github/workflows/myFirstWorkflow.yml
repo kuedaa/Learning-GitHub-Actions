@@ -1,6 +1,7 @@
 name: my-first-workflow
 on:
   push: null
+  
 jobs:
   job1:
     name: JOB1
@@ -37,3 +38,19 @@ jobs:
             ./myartifact.txt
             artifacts/
             !**/hostname.txt
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking current directory
+        run: |
+          pwd
+          ls -ltr
+      - name: Download single file artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: single_file
+      - name: cChecking current directory post download
+        run: |
+          pwd
+          ls -ltr
