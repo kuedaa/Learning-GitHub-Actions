@@ -25,6 +25,7 @@ jobs:
           name: single_file
           path: ./myartifact.txt
       - name: Upload from directory
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: directory_artifacts
           path: artifacts/
