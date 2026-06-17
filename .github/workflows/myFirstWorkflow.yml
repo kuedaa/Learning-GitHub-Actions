@@ -58,4 +58,4 @@ jobs:
           echo "[INFO] Once deployment application is accessible on port $APP_PORT."
       - name: Referring Repository Secret
         run: |
-          echo "[INFO] Application password is ${{ secret.APP_PASSWORD }}."
+          echo "[INFO] Application password is ${{ secrets.APP_PASSWORD }}."
