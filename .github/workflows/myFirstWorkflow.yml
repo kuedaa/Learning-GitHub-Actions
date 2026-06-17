@@ -51,7 +51,7 @@ jobs:
         uses: actions/download-artifact@v8.0.1
         with:
           name: single_file
-      - name: cChecking current directory post download
+      - name: Checking current directory post download
         run: |
           pwd
           ls -ltr
@@ -69,7 +69,38 @@ jobs:
         uses: actions/download-artifact@v8.0.1
         with:
           name: directory_artifacts
-      - name: cChecking current directory post download
+      - name: Checking current directory post download
         run: |
           pwd
           ls -ltr
+
+  job4:
+    name: JOB4
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create custom folder for download continue-on-error
+        run: |
+          mkdir -p single_file
+          mkdir -p download_directory
+      - name: Download single file artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: single_file
+          path: single_file
+      - name: checking current directory
+        run: |
+          pwd
+          ls -ltr
+      - name: Download Directory
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: directory_artifacts
+          path: download_directory
+      - name: Checking current directory post download
+        run: |
+          pwd
+          echo "Checking Single file directory"
+          ls -ltr single_file
+          echo "Checking directory artifcats"
+          ls -ltr download_directory
