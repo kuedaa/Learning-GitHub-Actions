@@ -111,6 +111,9 @@ jobs:
     name: Publish To Docker Hub
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      packages: write
+      contents: read      
     steps:
       - name: Download the Image
         uses: actions/download-artifact@v8
@@ -157,4 +160,4 @@ jobs:
       - name: Push Image
         run: |
           IMAGE_TAG="${{ needs.build.outputs.image-tags }}"
-          docker image push ${{ github.repository_owner }}/thinknyx_app:$IMAGE_TAG
+           docker image push ghcr.io/${{ github.repository_owner }}/thinknyx_app:$IMAGE_TAG
