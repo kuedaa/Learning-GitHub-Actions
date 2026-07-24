@@ -1,4 +1,4 @@
-name: my-first-workflow
+name: CI Pipeline
 # to get a trigger on every push in this repo in any branch
 on:
   push:
