@@ -127,7 +127,7 @@ jobs:
       - name: Tag Image
         run: |
           IMAGE_TAG = "${{needs.build.outputs.image-tags}}"
-          docker image tag thinknyx_app: $IMAGE_TAG ${{secrets.DOCKERHUB_USERNAME}}/thinknyx_app:$IMAGE_TAG
+          docker image tag thinknyx_app:$IMAGE_TAG ${{secrets.DOCKERHUB_USERNAME}}/thinknyx_app:$IMAGE_TAG
       - name: Push Image
         run: |
           IMAGE_TAG = "${{needs.build.outputs.image-tags}}"
